@@ -34,14 +34,21 @@ class MainActivity : AppCompatActivity() {
         binding.addbutton.setOnClickListener{
             addUserToRV()
             Toast.makeText(this, "Button pressed", Toast.LENGTH_SHORT).show()
-
         }
+        binding.removebutton.setOnClickListener {
+            Toast.makeText(this,"Remove User", Toast.LENGTH_SHORT).show()
+            removeUserToRV()
+        }
+    }
+
+    fun removeUserToRV(){
+        var lastUserPos = userList.lastIndex
+        adapter.removeUserAt(lastUserPos)
     }
 
     fun addUserToRV(){
         var newUser = User("new User", "newuser@testmail.de")
-        adapter.userlist.add(newUser)
-        adapter.notifyItemInserted(adapter.userlist.lastIndex)
+        adapter.addUser(newUser)
     }
 
     fun fillUserList(){

@@ -31,4 +31,14 @@ class UserAdapter(var userlist:ArrayList<User>): RecyclerView.Adapter<UserAdapte
     override fun getItemCount(): Int {
         return userlist.size
     }
+
+    fun addUser(user : User){
+        userlist.add(user)
+        notifyItemInserted(userlist.lastIndex)
+    }
+
+    fun removeUserAt(pos:Int){
+        userlist.removeAt(pos)
+        notifyItemRemoved(pos)
+    }
 }
