@@ -3,6 +3,7 @@ package com.example.batch005recview
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.batch005recview.Adapter.UserAdapter
 import com.example.batch005recview.Model.User
@@ -22,12 +23,20 @@ class MainActivity : AppCompatActivity() {
 
         fillUserList()
         setUpUi()
+
     }
 
     fun setUpUi(){
         binding.recView.layoutManager = LinearLayoutManager(this)
         adapter = UserAdapter(userList)
         binding.recView.adapter = adapter
+        binding.addbutton.setOnClickListener{
+            var newUser = User("new User", "newuser@testmail.de")
+            adapter.userlist.add(newUser)
+            adapter.notifyDataSetChanged()
+            Toast.makeText(this, "Button pressed", Toast.LENGTH_SHORT).show()
+
+        }
     }
 
     fun fillUserList(){

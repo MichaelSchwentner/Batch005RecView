@@ -12,8 +12,8 @@ class UserAdapter(var userlist:ArrayList<User>): RecyclerView.Adapter<UserAdapte
         fun bind(user: User){
             binding.email.text = user.email
             binding.name.text = user.name
-
-            binding.name.setOnClickListener{
+//--------------root,name
+            binding.root.setOnClickListener{
                 binding.email.text = "Hurra"
             }
         }
