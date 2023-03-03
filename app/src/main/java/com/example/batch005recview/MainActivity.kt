@@ -30,13 +30,18 @@ class MainActivity : AppCompatActivity() {
         binding.recView.layoutManager = LinearLayoutManager(this)
         adapter = UserAdapter(userList)
         binding.recView.adapter = adapter
+
         binding.addbutton.setOnClickListener{
-            var newUser = User("new User", "newuser@testmail.de")
-            adapter.userlist.add(newUser)
-            adapter.notifyDataSetChanged()
+            addUserToRV()
             Toast.makeText(this, "Button pressed", Toast.LENGTH_SHORT).show()
 
         }
+    }
+
+    fun addUserToRV(){
+        var newUser = User("new User", "newuser@testmail.de")
+        adapter.userlist.add(newUser)
+        adapter.notifyItemInserted(adapter.userlist.lastIndex)
     }
 
     fun fillUserList(){
